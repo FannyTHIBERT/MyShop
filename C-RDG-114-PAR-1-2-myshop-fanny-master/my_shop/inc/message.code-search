@@ -1,0 +1,349 @@
+# Query: message
+# ContextLines: 1
+
+127 résultats - Fichiers 28
+
+my_shop/categories_add.php:
+  21              $query1->execute();
+  22:             $_SESSION['success_admin_message'] = "Catégorie ajouté avec succès !";
+  23              header('Location: categories_admin.php');
+
+my_shop/categories_admin.php:
+  60                  <?php
+  61:                     if(!empty($_SESSION['success_admin_message'])){
+  62:                         echo '<div class="alert alert-success" role="success">' . $_SESSION['success_admin_message'].'
+  63                          </div>';
+  64:                         $_SESSION['success_admin_message']='';
+  65                      }
+
+my_shop/categories_delete.php:
+  26          $query->execute();
+  27:         $_SESSION['success_admin_message'] = "Catégorie supprimé";
+  28          header('Location: categories_admin.php');
+
+my_shop/categories_edit.php:
+  25  
+  26:         $_SESSION['success_admin_message'] = "Catégorie modifiée";
+  27          header('Location: categories_admin.php');
+
+my_shop/manage_categories.php:
+   13      $heurelog=date('Y-m-d H:i:s');    
+   14:     $message=" A les droits pour accéder à la page admin catégories";
+   15:     file_put_contents(JOURNAL_LOG_FILE,$message. " " .$heurelog . PHP_EOL, FILE_APPEND | LOCK_EX);
+   16  }
+
+   83      
+   84:             $_SESSION['success_admin_message'] = "Produit modifié";
+   85              header('Location: admin_categories.php');
+   86          }else{
+   87:             $_SESSION['error_admin_message'] = "Le formulaire est incomplet";
+   88          }
+
+  145                  $query1->execute();
+  146:                 $_SESSION['success_admin_message'] = "Produit ajouté avec succès !";
+  147                  header('Location: admin_categories.php');
+
+  197          $query->execute();
+  198:         $_SESSION['success_admin_message'] = "Produit supprimé";
+  199          header('Location: admin_categories.php');
+
+my_shop/my_account.php:
+  55              <?php
+  56:                     if(!empty($_SESSION['error_user_message'])){
+  57:                         echo '<div class="alert alert-danger" role="alert">' . $_SESSION['error_user_message'].'
+  58                          </div>';
+  59:                         $_SESSION['error_user_message']="";
+  60                      }
+
+  63                  <?php
+  64:                     if(!empty($_SESSION['success_user_message'])){
+  65:                         echo '<div class="alert alert-success" role="success">' . $_SESSION['success_user_message'].'
+  66                          </div>';
+  67:                         $_SESSION['success_user_message']="";
+  68                      }
+
+my_shop/products_add.php:
+  36              $query1->execute();
+  37:             $_SESSION['success_admin_message'] = "Produit ajouté avec succès !";
+  38              header('Location: products_admin.php');
+
+my_shop/products_admin.php:
+  39                  
+  40:                     <?php if(!is_null($_SESSION['success_user_message'])): ?>
+  41:                         <p> <a class="alert alert-success" role="success">'<?=htmlspecialchars($_SESSION['success_user_message']) ?></a> </p>
+  42:                         <?php unset($_SESSION['success_user_message']);?>
+  43                          <?php endif; ?>
+
+my_shop/products_delete.php:
+  29          $query->execute();
+  30:         $_SESSION['success_admin_message'] = "Produit supprimé";
+  31          header('Location: products_admin.php');
+
+my_shop/products_edit_save:
+  36              $query1->execute();
+  37:             $_SESSION['success_admin_message'] = "Produit modifié !";
+  38              header('Location: products_admin.php');
+
+my_shop/products_edit.php:
+  24      if(!$result1){
+  25:     $_SESSION['error_admin_message'] = "Cet id n'existe pas";
+  26      header('Location: products_admin.php');
+
+  28      }else{
+  29:     $_SESSION['error_admin_message'] = "URL invalide";
+  30      header('Location: products_admin.php');
+
+  36  { if (!modify_product_complete($id=$_GET['id'],$name=$_POST['name'],$price=$_POST['price'],$category_id=$_POST['category_id'],$description=$_POST['description'],$littleimg=$_POST['littleimg'],
+  37:     $bigimg=$_POST['bigimg'])) {$_SESSION['error_admin_message']="Tous les champs doivent être remplis" ; }
+  38      else { if ( modify_product_validation($name=$_POST['name'],$price=$_POST['price'],$description=$_POST['description'],$littleimg=$_POST['littleimg'],
+  39:         $bigimg=$_POST['bigimg']) ){$_SESSION['error_admin_message']="La catégorie n'existe pas" ;}  else { modify_product($id=$_GET['id'],$name=$_POST['name'],$price=$_POST['price'],$category_id=$_POST['category_id'],$description=$_POST['description'],$littleimg=$_POST['littleimg'],
+  40          $bigimg=$_POST['bigimg']);   }  }
+
+  69                                        
+  70:                     if(!empty($_SESSION['success_admin_message'])){
+  71:                         echo '<div class="alert alert-danger" role="alert">' . $_SESSION['success_admin_message'].'
+  72                          </div>';
+  73:                         $_SESSION['success_admin_message']="";
+  74                    }
+
+my_shop/signin.php:
+  15  if(!is_null($_POST["valid_connection"])) {my_password_verify($_POST["form_username"],$password=$_POST["form_password"]);}
+  16: if (!is_null($_SESSION['error_message'])) : ?>
+  17              <div class="row">
+  18                  <section class="col-12">
+  19:                     <a class="error_user_message"><?= htmlspecialchars($_SESSION['error_user_message']) ?></a>
+  20              </div>
+  21:             <?php unset($_SESSION['error_user_message']); ?>
+  22          <?php endif; ?>
+
+my_shop/signup.php:
+  50      <?php 
+  51: // gestion des messages d'erreur
+  52: if(!is_null($_SESSION['error_user_message'])): ?>
+  53  <div class="row"><section class="col-12">
+  54: <a class="error_message"><?=htmlspecialchars($_SESSION['error_user_message']) ?></a>
+  55  </div>
+  56: <?php unset($_SESSION['error_user_message']);?>
+  57  <?php endif; ?>
+
+my_shop/users_add_save.php:
+  26              $query1->execute();
+  27:             $_SESSION['success_admin_message'] = "User ajouté avec succès !";
+  28              header('Location: categories_admin.php');
+
+  44          if(!empty($res1)){
+  45:             $_SESSION['error_admin_message']="email déjà utilisé, merci de vous connecter";
+  46:             $message2="email déjà utilisé";
+  47              $heurelog=date('Y-m-d H:i:s');
+  48:             file_put_contents(JOURNAL_LOG_FILE,"my_password_verify " .  $message2. " " .$heurelog . PHP_EOL, FILE_APPEND | LOCK_EX);
+  49              header('Location: signup.php');
+
+  76  
+  77:                     $_SESSION['success_admin_message'] = "User créé";
+  78                      header('Location: users_admin.php');
+
+  80                      $heurelog = date('Y-m-d H:i:s');
+  81:                     $message = "invalid password or password confirmation";
+  82:                     file_put_contents(JOURNAL_LOG_FILE, "create_account_validation " . $message . " " . $heurelog . PHP_EOL, FILE_APPEND | LOCK_EX);
+  83                      $_SESSION['erreur'] = "invalid password or password confirmation";
+
+  86                  $heurelog = date('Y-m-d H:i:s');
+  87:                 $message = "Invalid email";
+  88:                 file_put_contents(JOURNAL_LOG_FILE, "create_account_validation " . $message . " " . $heurelog . PHP_EOL, FILE_APPEND | LOCK_EX);
+  89                  $_SESSION['erreur'] = "Invalid email <br>";
+
+  92              $heurelog = date('Y-m-d H:i:s');
+  93:             $message = "Invalid name";
+  94:             file_put_contents(JOURNAL_LOG_FILE, "create_account_validation " . $message . " " . $heurelog . PHP_EOL, FILE_APPEND | LOCK_EX);
+  95              $_SESSION['erreur'] = "Invalid name";
+
+my_shop/users_add.php:
+  31                  <?php
+  32:                 if (!empty($_SESSION['error_admin_message'])) {
+  33:                     echo '<div class="alert alert-danger" role="alert">' . $_SESSION['error_admin_message'] . '
+  34                          </div>';
+  35:                     $_SESSION['error_admin_message'] = "";
+  36                  }
+
+my_shop/users_admin.php:
+  37  
+  38:             <?php if(!is_null($_SESSION['success_admin_message'])): ?>
+  39:             <p> <a class="alert alert-success" role="success"><?=htmlspecialchars($_SESSION['success_admin_message']) ?></a> </p>
+  40:             <?php unset($_SESSION['success_admin_message']);?>
+  41              <?php endif; ?>
+
+  43              
+  44:          <?php if(!is_null($_SESSION['success_admin2_message'])): ?>
+  45:          <p> <a class="alert alert-success" role="success"><?=htmlspecialchars($_SESSION['success_admin2_message']) ?></a> </p>
+  46:          <?php unset($_SESSION['success_admin2_message']);?>
+  47           <?php endif; ?>    
+
+my_shop/users_delete.php:
+  25          $query->execute();
+  26:         $_SESSION['success_admin_message'] = "User supprimé";
+  27          header('Location: users_admin.php');
+  28          }else{
+  29:         $_SESSION['error_admin_message'] = "URL invalide";
+  30          header('Location: users_admin.php');
+
+my_shop/users_edit.php:
+  71                  <?php
+  72:                 if (!empty($_SESSION['success_admin_message'])) {
+  73:                     echo '<div class="alert alert-success" role="success">' . $_SESSION['success_admin_message'] . '
+  74                          </div>';
+  75:                     $_SESSION['success_admin_message'] = "";
+  76                  }
+
+my_shop/css/styles.css:
+  379  
+  380: .error_message {
+  381    color:#fff;
+
+my_shop/inc/add_user.php:
+   15  
+   16:     $_SESSION['error_user_message']="email déjà utilisé, merci de vous connecter";
+   17:     $message2="email déjà utilisé";
+   18      $heurelog=date('Y-m-d H:i:s');
+   19:     file_put_contents(JOURNAL_LOG_FILE,"my_password_verify " .  $message2. " " .$heurelog . PHP_EOL, FILE_APPEND | LOCK_EX);
+   20      header('Location: signup.php');
+
+   82                          
+   83:                         $_SESSION['success_user_message']="Votre compte a bien été crée";
+   84                          header('Location: my_account.php');
+   85                          }
+   86: // sinon on gere le message de succés de création de compte et on renvoie vers la page gestion des utilisateurs
+   87  
+   88                          else {
+   89:                         $_SESSION['success_admin_message'] = "User ajouté avec succès !!";
+   90                          header('Location: users_admin.php');
+
+   98              $heurelog=date('Y-m-d H:i:s');    
+   99:             $message="invalid password or password confirmation";
+  100:             file_put_contents(JOURNAL_LOG_FILE, "create_account_validation " . $message. " " .$heurelog . PHP_EOL, FILE_APPEND | LOCK_EX);   
+  101:             $_SESSION['error_user_message']="invalid password or password confirmation";
+  102:             $_SESSION['error_admin_message']="invalid password or password confirmation";
+  103                  }
+
+  107              $heurelog=date('Y-m-d H:i:s');    
+  108:             $message="Invalid email";
+  109:             file_put_contents(JOURNAL_LOG_FILE, "create_account_validation " . $message. " " .$heurelog . PHP_EOL, FILE_APPEND | LOCK_EX);    
+  110:             $_SESSION['error_user_message']="Invalid email";
+  111:             $_SESSION['error_admin_message']="Invalid email";
+  112              }
+
+  115          $heurelog=date('Y-m-d H:i:s');    
+  116:         $message="Invalid name";
+  117:         file_put_contents(JOURNAL_LOG_FILE, "create_account_validation " . $message. " " .$heurelog . PHP_EOL, FILE_APPEND | LOCK_EX);
+  118:         $_SESSION['error_user_message']="Invalid name";
+  119:         $_SESSION['error_admin_message']="Invalid name";
+  120           }
+
+  126  catch (Exception $e) {
+  127:     $_SESSION['error_admin_message'] = $e->getMessage();
+  128  }
+
+my_shop/inc/connect.php:
+  16              $heurelog=date('Y-m-d H:i:s');    
+  17:             $message="connection succesfull";
+  18:             file_put_contents(JOURNAL_LOG_FILE, $message . " " . $heurelog  . PHP_EOL, FILE_APPEND | LOCK_EX);}
+  19                }
+
+  24          catch(PDOException $e){
+  25:       $errormessage=$e->getMessage();
+  26:         file_put_contents(ERROR_LOG_FILE, $errormessage. PHP_EOL, FILE_APPEND | LOCK_EX);
+  27          return;
+
+my_shop/inc/connexion.php:
+  28          } catch (PDOException $e) {
+  29:             print "Error!: " . $e->getMessage() . "";
+  30              die();
+
+my_shop/inc/header_admin.php:
+  36          $heurelog=date('Y-m-d H:i:s');    
+  37:         $message=" A les droits pour accéder à la page admin catégories";
+  38:         file_put_contents(JOURNAL_LOG_FILE,$message. " " .$heurelog . PHP_EOL, FILE_APPEND | LOCK_EX);
+  39      }
+
+  77      
+  78: <?php if(isset($_SESSION['error_admin_message'])): ?>
+  79: <a class="alert alert-danger" role="alert"><?=htmlspecialchars($_SESSION['error_admin_message'])?></a>
+  80: <?php unset($_SESSION['error_admin_message']);?>
+  81  <?php endif; ?>
+
+my_shop/inc/modify_category.php:
+  51          catch (Exception $e) {
+  52:             $_SESSION['error_admin_message'] = $e->getMessage();
+  53          }
+
+  71  catch (Exception $e) {
+  72:     $_SESSION['error_admin_message'] = $e->getMessage();
+  73  }
+
+my_shop/inc/modify_product.php:
+  25  ) {
+  26: if (!is_string($name) || $name=="" ){$_SESSION['error_admin_message'] = "Le nom n'est pas valide";
+  27      return false; }
+  28: if ( !is_numeric($price)){$_SESSION['error_admin_message'] = "Attention, le prix n'est pas correct";
+  29  return false; }
+  30: if (!is_string($description)){$_SESSION['error_admin_message'] = "La description n'est pas valide";
+  31  return false; }
+  32: if (!is_string($littleimg)){$_SESSION['error_admin_message'] = "L'image n'est pas valide";
+  33      return false; }
+  34: if (!is_string($bigimg)){$_SESSION['error_admin_message'] = "L'image n'est pas valide";
+  35          return false; }
+
+  67  $query1->execute();
+  68: $_SESSION['success_admin_message'] ="Produit modifié !";
+  69  header('Location: products_admin.php');
+
+  74  catch (Exception $e) {
+  75:     $_SESSION['error_admin_message'] = $e->getMessage();
+  76  }
+
+my_shop/inc/modify_user.php:
+  22          if (!$result1) {
+  23:             $_SESSION['error_admin_message'] = "Cet id n'existe pas";
+  24          } else { //else 1 verification  des parametres à passer dans modify
+
+  60              $marequete2->execute();
+  61:             $_SESSION['success_admin2_message'] ="Vos modifications ont été enregistrées";
+  62  
+
+  78      catch (Exception $e) {
+  79:         $_SESSION['error_admin_message'] = $e->getMessage();
+  80      }
+
+my_shop/inc/password.php:
+  22      $heurelog=date('Y-m-d H:i:s');    
+  23:     $message="parmeters missing";
+  24:     file_put_contents(JOURNAL_LOG_FILE, "my_password_verify " . $message. " " .$heurelog . PHP_EOL, FILE_APPEND | LOCK_EX);
+  25:     $_SESSION['error_admin_message']="merci de remplir tous les champs";
+  26  }  
+
+  37          if(empty($res1)){
+  38:         $_SESSION['error_user_message']="mot de passe ou email invalide";    
+  39:         $message="No results matching your search";
+  40          $heurelog=date('Y-m-d H:i:s');
+  41:         file_put_contents(JOURNAL_LOG_FILE,"my_password_verify " .  $message. " " .$heurelog . PHP_EOL, FILE_APPEND | LOCK_EX);
+  42          return false;
+
+  66          $heurelog=date('Y-m-d H:i:s');    
+  67:         $message="incorrect password";
+  68:         $_SESSION['error_user_message']="mot de passe ou email invalide";
+  69:         file_put_contents(JOURNAL_LOG_FILE, "my_password_verify " . $message. " " .$heurelog . PHP_EOL, FILE_APPEND | LOCK_EX);
+  70          }
+
+my_shop/inc/session.php:
+   9          $_SESSION['id'] = session_id();
+  10:         $message = "new session id : ";
+  11:         file_put_contents(JOURNAL_LOG_FILE, "manage_php_session " . $message . " " . $_SESSION['id'] . " " . $_SESSION['user_id'] . $heurelog . PHP_EOL, FILE_APPEND | LOCK_EX);
+  12          return true;
+
+  14          $heurelog = date('Y-m-d H:i:s');
+  15:         $message = "session id : ";
+  16:         file_put_contents(JOURNAL_LOG_FILE, "manage_php_session " . $message . " " . $_SESSION['id'] . " " . $heurelog . PHP_EOL, FILE_APPEND | LOCK_EX);
+  17          return false;
+
+  32          $heurelog = date('Y-m-d H:i:s');
+  33:         $message = " true";
+  34          file_put_contents(JOURNAL_LOG_FILE, "is_logged " . $_SESSION['is_logged'] . " " . $heurelog . PHP_EOL, FILE_APPEND | LOCK_EX);
